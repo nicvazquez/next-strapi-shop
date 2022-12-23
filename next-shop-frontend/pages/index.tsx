@@ -1,8 +1,7 @@
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Header } from "../components/Header/Header";
+import { MainLayout } from "../components/Layouts/MainLayout";
 import { Product, Products } from "../interfaces/products";
 import { getProducts } from "../utils";
 
@@ -14,16 +13,14 @@ function HomePage({ products }: Props) {
 	const [searchProduct, setSearchProduct] = useState<string>("");
 
 	return (
-		<main>
-			<Head>
-				<title>Next Marketplace</title>
-			</Head>
-
-			<Header />
-
-			<h1 className="text-3xl font-bold">Next MarketPlace</h1>
-
+		<MainLayout
+			title="Next Marketplace"
+			description="Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure
+		qui lorem cupidatat commodo. Elit sunt amet fugiat veniam
+		occaecat fugiat aliqua."
+		>
 			<input
+				className=""
 				type="search"
 				placeholder="Search products"
 				value={searchProduct}
@@ -55,7 +52,7 @@ function HomePage({ products }: Props) {
 						</li>
 					))}
 			</ul>
-		</main>
+		</MainLayout>
 	);
 }
 

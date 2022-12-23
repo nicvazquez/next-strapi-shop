@@ -2,22 +2,27 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 export const Header = () => {
+	const routerPath = useRouter().asPath;
+
 	const links = [
 		{
+			id: 1,
 			name: "Home",
 			path: "/",
 		},
 	];
-
-	const routerPath = useRouter().asPath;
 	return (
-		<header>
-			<nav>
+		<header className="px-6 pt-6 lg:px-8">
+			<nav aria-label="Global">
 				{links.map(
-					({ name, path }) =>
-						routerPath !== path && (
-							<Link key={name} href={path}>
-								{name}
+					(link) =>
+						routerPath !== link.path && (
+							<Link
+								key={link.id}
+								href={link.path}
+								className="underline font-semibold text-gray-900 hover:text-gray-900"
+							>
+								{link.name}
 							</Link>
 						)
 				)}
