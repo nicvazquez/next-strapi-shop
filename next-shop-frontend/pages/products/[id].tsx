@@ -1,23 +1,33 @@
 import { GetStaticProps } from "next"
+import Image from "next/image"
 import { Header } from "../../components/Header/Header"
-import { DataProduct } from "../../interfaces/products"
+import { Product } from "../../interfaces/products"
 import { getProduct, getProducts } from "../../utils"
 
 interface Props {
-    product: DataProduct
+    product: Product
 }
 function ProductPage({product}: Props) {
-
     return (
-        <main>
+        <>
             <Header />
 
-            <div>
-                <h1>{product.attributes.title}</h1>
+            <main>
+                <div>
+                    <h1>{product.attributes.title}</h1>
+                    <Image
+                        src={`http://127.0.0.1:1337${product.attributes.image.data.attributes.url}`} 
+                        alt={`${product.attributes.image.data.attributes.alternativeText}`} 
+                        width={30} 
+                        height={30} 
+                    />
+                </div>
                 <p>${product.attributes.price}</p>
                 <p>{product.attributes.description}</p>
-            </div>
-        </main>
+            </main>
+
+            <h2>Related products:</h2>
+        </>
     )
 
 }
