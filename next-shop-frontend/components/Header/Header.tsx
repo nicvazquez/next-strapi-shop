@@ -1,22 +1,21 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 export const Header = () => {
     const links = [
         {
             name: "Home",
             path: "/"
-        },
-        {
-            name: "Products",
-            path: "/products"
         }
     ]
+
+    const routerPath = useRouter().asPath
   return (
     <header>
         <nav className="d-flex gap-1">
             {
                 links.map(({name, path}) => (
-                    <Link key={name} href={path}>{name}</Link>
+                    routerPath !== path &&  <Link key={name} href={path}>{name}</Link>
                 ))
             }
         </nav>
