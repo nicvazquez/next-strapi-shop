@@ -27,7 +27,7 @@ function HomePage({ products }: Props) {
 				placeholder="Search products"
 			/>
 
-			<ul>
+			<ul className="flex flex-wrap align-center gap-10 justify-center">
 				{products.data
 					.filter((product) =>
 						product.attributes.title
@@ -35,20 +35,23 @@ function HomePage({ products }: Props) {
 							.includes(searchProduct.toLowerCase())
 					)
 					.map((product: Product) => (
-						<li key={product.id}>
-							<Image
-								src={`http://127.0.0.1:1337${product.attributes.image.data.attributes.url}`}
-								alt={`${product.attributes.image.data.attributes.alternativeText}`}
-								width={50}
-								height={50}
-							/>
+						<li
+							key={product.id}
+							className="block p-6 rounded-lg shadow-lg hover:shadow-md transition bg-white w-full md:w-unset"
+						>
+							<Link href={`/products/${product.id}`} className="flex gap-4">
+								<Image
+									src={`http://127.0.0.1:1337${product.attributes.image.data.attributes.url}`}
+									alt={`${product.attributes.image.data.attributes.alternativeText}`}
+									width={50}
+									height={30}
+								/>
 
-							<div>
-								<Link href={`/products/${product.id}`}>
-									{product.attributes.title}
+								<div>
+									<h2 className="font-bold">{product.attributes.title}</h2>
 									<span>{product.attributes.category}</span>
-								</Link>
-							</div>
+								</div>
+							</Link>
 						</li>
 					))}
 			</ul>
