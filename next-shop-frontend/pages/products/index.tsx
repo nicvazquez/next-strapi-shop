@@ -1,20 +1,20 @@
 import Head from "next/head"
 import Link from "next/link"
-import { DataProduct, Products } from "../interfaces/products"
-import { getProducts } from "../utils"
+import { DataProduct, Products } from "../../interfaces/products"
+import { getProducts } from "../../utils"
 
 interface Props {
   products: Products
 }
 
-function HomePage( { products }: Props ) {
+function ProductsPage( { products }: Props ) {
 
   return (
     <>
-    <Head>
-      <title>Next Shop</title>
+    <Head> 
+      <title>Next Shop | Products</title>
     </Head>
-     <h1>Next Shop</h1>
+     <h1>Products</h1>
 
      <ul>
       {
@@ -38,4 +38,4 @@ export async function getStaticProps() {
 }
 
 
-export default HomePage
+export default ProductsPage
