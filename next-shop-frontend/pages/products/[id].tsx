@@ -12,18 +12,17 @@ function ProductPage({product}: Props) {
         <>
             <Header />
 
-            <main>
-                <div>
-                    <h1>{product.attributes.title}</h1>
-                    <Image
-                        src={`http://127.0.0.1:1337${product.attributes.image.data.attributes.url}`} 
-                        alt={`${product.attributes.image.data.attributes.alternativeText}`} 
-                        width={30} 
-                        height={30} 
-                    />
-                </div>
-                <p>${product.attributes.price}</p>
-                <p>{product.attributes.description}</p>
+            <main className="d-flex flex-column justify-center align-center">
+                    <div className="d-flex align-center">
+                        <Image
+                            src={`http://127.0.0.1:1337${product.attributes.image.data.attributes.url}`} 
+                            alt={`${product.attributes.image.data.attributes.alternativeText}`} 
+                            width={100} 
+                            height={100} 
+                        />
+                        <h1>{product.attributes.title}</h1>
+                    </div>
+                    <p>${product.attributes.price} - {product.attributes.description}</p>
             </main>
 
             <h2>Related products:</h2>

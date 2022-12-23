@@ -23,16 +23,16 @@ export const ProductsPageLayout = ({children, title, products}: Props) => {
 
         {children}
 
-        <ul>
+        <ul className="d-flex justify-between">
             {
                 products.data.map((product: Product) => (
                 <li key={product.id}>
-                    <Link href={`/products/${product.id}`}>
+                    <Link href={`/products/${product.id}`} className="d-flex align-center gap-1">
                         <Image 
                             src={`http://127.0.0.1:1337${product.attributes.image.data.attributes.url}`} 
                             alt={`${product.attributes.image.data.attributes.alternativeText}`} 
-                            width={30} 
-                            height={30} 
+                            width={50} 
+                            height={50} 
                         />
                         {product.attributes.title}
                     </Link>

@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import styles from './header.module.css'
 
 export const Header = () => {
     const links = [
@@ -13,8 +12,8 @@ export const Header = () => {
         }
     ]
   return (
-    <header className={styles.header}>
-        <nav>
+    <header>
+        <nav className="d-flex gap-1">
             {
                 links.map(({name, path}) => (
                     <Link key={name} href={path}>{name}</Link>
