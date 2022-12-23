@@ -24,14 +24,13 @@ function HomePage({ products }: Props) {
 			<h1 className="text-3xl font-bold">Next MarketPlace</h1>
 
 			<input
-				className="mt-1"
 				type="search"
 				placeholder="Search products"
 				value={searchProduct}
 				onChange={(e) => setSearchProduct(e.target.value)}
 			/>
 
-			<ul className="d-flex justify-between">
+			<ul>
 				{products.data
 					.filter((product) =>
 						product.attributes.title
@@ -39,7 +38,7 @@ function HomePage({ products }: Props) {
 							.includes(searchProduct.toLowerCase())
 					)
 					.map((product: Product) => (
-						<li key={product.id} className="d-flex align-center gap-1">
+						<li key={product.id}>
 							<Image
 								src={`http://127.0.0.1:1337${product.attributes.image.data.attributes.url}`}
 								alt={`${product.attributes.image.data.attributes.alternativeText}`}
@@ -47,15 +46,10 @@ function HomePage({ products }: Props) {
 								height={50}
 							/>
 
-							<div className="d-flex flex-column">
-								<Link
-									href={`/products/${product.id}`}
-									className="d-flex flex-column"
-								>
+							<div>
+								<Link href={`/products/${product.id}`}>
 									{product.attributes.title}
-									<span className="category">
-										{product.attributes.category}
-									</span>
+									<span>{product.attributes.category}</span>
 								</Link>
 							</div>
 						</li>
