@@ -29,7 +29,7 @@ function HomePage({ products }: Props) {
 				placeholder="Search products"
 			/>
 
-			<ul className="flex flex-wrap align-center gap-10 justify-center">
+			<ul className="flex flex-wrap gap-10 justify-center">
 				{products.data
 					.filter((product) =>
 						product.attributes.title
@@ -54,12 +54,14 @@ function HomePage({ products }: Props) {
 									/>
 
 									<div>
-										<h2 className="font-bold">{product.attributes.title}</h2>
+										<h2 className="font-bold text-lg">
+											{product.attributes.title}
+										</h2>
 										<Tag name={product.attributes.category} />
 									</div>
 								</div>
 
-								<p className="text-gray-500">
+								<p className="text-gray-500 text-sm">
 									{product.attributes.description.slice(0, 50)}...
 								</p>
 							</Link>
