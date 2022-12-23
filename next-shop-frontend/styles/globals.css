@@ -4,8 +4,8 @@
 
 @layer utilities {
 	@variants responsive {
-		.w-unset {
-			width: unset;
+		.text-xxs {
+			font-size: 0.6rem;
 		}
 	}
 }
