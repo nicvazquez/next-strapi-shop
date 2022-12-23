@@ -21,7 +21,7 @@ function HomePage({ products }: Props) {
 
 			<Header />
 
-			<h1 className="mt-2">Next MarketPlace</h1>
+			<h1 className="text-3xl font-bold">Next MarketPlace</h1>
 
 			<input
 				className="mt-1"
