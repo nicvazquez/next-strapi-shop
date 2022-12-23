@@ -10,14 +10,6 @@ function ProductPage({product}: Props) {
 
     return (
         <main>
-            <header>
-                <nav>
-                    <Link href={"/"}>
-                        {"<"} Home
-                    </Link>
-                </nav>
-            </header>
-            
             <div>
                 <h1>{product.attributes.title}</h1>
                 <p>${product.attributes.price}</p>
