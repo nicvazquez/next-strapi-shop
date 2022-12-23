@@ -19,23 +19,26 @@ export const ProductsPageLayout = ({children, title, products}: Props) => {
         
         <Header />
 
-        <h1>{title}</h1>
+        <h1 className="mt-2 mb-2">{title}</h1>
 
         {children}
 
         <ul className="d-flex justify-between">
             {
                 products.data.map((product: Product) => (
-                <li key={product.id}>
-                    <Link href={`/products/${product.id}`} className="d-flex align-center gap-1">
-                        <Image 
-                            src={`http://127.0.0.1:1337${product.attributes.image.data.attributes.url}`} 
-                            alt={`${product.attributes.image.data.attributes.alternativeText}`} 
-                            width={50} 
-                            height={50} 
-                        />
-                        {product.attributes.title}
-                    </Link>
+                <li key={product.id} className="d-flex align-center gap-1">
+                    <Image 
+                        src={`http://127.0.0.1:1337${product.attributes.image.data.attributes.url}`} 
+                        alt={`${product.attributes.image.data.attributes.alternativeText}`} 
+                        width={50} 
+                        height={50} 
+                    />
+                    <div className="d-flex flex-column">
+                        <Link href={`/products/${product.id}`} className="d-flex flex-column">
+                            {product.attributes.title}
+                            <span className="category">{product.attributes.category}</span>
+                        </Link>
+                    </div>
                 </li>
                 ))
             }

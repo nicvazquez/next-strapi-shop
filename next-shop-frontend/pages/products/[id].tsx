@@ -12,15 +12,20 @@ function ProductPage({product}: Props) {
         <>
             <Header />
 
-            <main className="d-flex flex-column justify-center align-center">
-                    <div className="d-flex align-center">
+            <main className="d-flex flex-column justify-center align-center mb-2">
+                    <div className="d-flex align-center gap-1 mb-2">
                         <Image
                             src={`http://127.0.0.1:1337${product.attributes.image.data.attributes.url}`} 
                             alt={`${product.attributes.image.data.attributes.alternativeText}`} 
                             width={100} 
                             height={100} 
                         />
-                        <h1>{product.attributes.title}</h1>
+                        <div className="d-flex flex-column">
+                            <h1>{product.attributes.title}</h1>
+                            <span className="category">
+                                {product.attributes.category}
+                            </span>
+                        </div>
                     </div>
                     <p>${product.attributes.price} - {product.attributes.description}</p>
             </main>

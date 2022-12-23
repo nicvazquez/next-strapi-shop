@@ -15,6 +15,7 @@ export interface ProductAttributes {
     createdAt:   Date;
     updatedAt:   Date;
     image:       Image;
+    category:   string;
 }
 
 export interface Image {

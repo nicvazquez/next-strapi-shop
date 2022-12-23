@@ -28,6 +28,15 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "security",
+        "management",
+        "organization"
+      ],
+      "required": true
     }
   }
 }
