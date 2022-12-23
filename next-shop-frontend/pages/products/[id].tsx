@@ -1,13 +1,15 @@
 import { GetStaticProps } from "next"
 import Image from "next/image"
+import Link from "next/link"
 import { Header } from "../../components/Header/Header"
 import { Product } from "../../interfaces/products"
-import { getProduct, getProducts } from "../../utils"
+import { getFilteredProducts, getProduct, getProducts } from "../../utils"
 
 interface Props {
     product: Product
+    relatedProducts: Product[]
 }
-function ProductPage({product}: Props) {
+function ProductPage({product, relatedProducts}: Props) {
     return (
         <>
             <Header />
@@ -30,7 +32,26 @@ function ProductPage({product}: Props) {
                     <p>${product.attributes.price} - {product.attributes.description}</p>
             </main>
 
-            <h2>Related products:</h2>
+            {
+                relatedProducts.length > 0 && (
+                    <div>
+                        <h2>Related products:</h2>
+                        <ul>
+                            {
+                                relatedProducts.map(product => (
+                                    <li className="mb-1" key={product.id}>
+                                        <div className="d-flex align-center gap-05">
+                                            <Link href={`/products/${product.id}`}>{product.attributes.title}</Link> -
+                                            <span className="category">{product.attributes.category}</span>
+                                        </div>
+                                        <p>{product.attributes.description.slice(0, 70)}...</p>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                )
+            }
         </>
     )
 
@@ -52,12 +73,19 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
     const { id } = params as { id: string }
     const product = await getProduct(id)
 
+    const filteredProducts = await getFilteredProducts("category", "eqi", product.data.attributes.category)
+    const relatedProducts = filteredProducts.data.filter(
+        (filteredProduct: Product) => filteredProduct.attributes.title !== product.data.attributes.title
+    )
+
     return {
         props: {
-            product: product.data
+            product: product.data,
+            relatedProducts: relatedProducts
         },
         revalidate: 86400
     }
 }
+
 
 export default ProductPage

@@ -4,6 +4,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 ul {
     list-style: none;
+    padding: 0;
 }
 
 a {
@@ -39,8 +40,16 @@ a {
     flex-direction: column;
 }
 
+.gap-05 {
+    gap: .5rem;
+}
+
 .gap-1 {
     gap: 1rem;
+}
+
+.mb-1 {
+    margin-bottom: 1rem;
 }
 
 .mb-2 {
