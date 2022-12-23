@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next"
-import Link from "next/link"
+import { Header } from "../../components/Header/Header"
 import { DataProduct } from "../../interfaces/products"
 import { getProduct, getProducts } from "../../utils"
 
@@ -10,6 +10,8 @@ function ProductPage({product}: Props) {
 
     return (
         <main>
+            <Header />
+
             <div>
                 <h1>{product.attributes.title}</h1>
                 <p>${product.attributes.price}</p>

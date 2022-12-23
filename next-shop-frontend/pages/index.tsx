@@ -1,5 +1,6 @@
 import Head from "next/head"
 import Link from "next/link"
+import { ProductsPageLayout } from "../components/Layouts/ProductsPageLayout"
 import { DataProduct, Products } from "../interfaces/products"
 import { getProducts } from "../utils"
 
@@ -10,24 +11,9 @@ interface Props {
 function HomePage( { products }: Props ) {
 
   return (
-    <>
-    <Head>
-      <title>Next Shop</title>
-    </Head>
-     <h1>Next Shop</h1>
-
-     <ul>
-      {
-        products.data.map((product: DataProduct) => (
-          <li key={product.id}>
-            <Link href={`/products/${product.id}`}>
-              {product.attributes.title}
-            </Link>
-          </li>
-        ))
-      }
-     </ul>
-    </>
+    <ProductsPageLayout title="Next Marketplace" products={products}>
+      <p>Welcome</p>
+    </ProductsPageLayout>     
   )
 }
 
