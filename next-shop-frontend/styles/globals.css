@@ -17,7 +17,6 @@ a {
     border-radius: 5px;
     display: grid;
     place-items: center;
-    color: black;
 }
 
 .d-flex {
@@ -54,6 +53,10 @@ a {
 
 .mb-2 {
     margin-bottom: 2rem;
+}
+
+.mt-1 {
+    margin-top: 1rem;
 }
 
 .mt-2 {
