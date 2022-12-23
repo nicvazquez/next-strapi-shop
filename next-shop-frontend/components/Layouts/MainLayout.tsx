@@ -1,6 +1,6 @@
 import Head from "next/head";
-import { GradientBottom } from "../Gradients/GradientBottom";
-import { Header } from "../Header/Header";
+import { GradientBottom } from "../GradientBottom";
+import { Header } from "../Header";
 
 interface Props {
 	children: JSX.Element | JSX.Element[];

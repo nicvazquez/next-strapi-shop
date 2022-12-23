@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { Input } from "../components/Input";
 import { MainLayout } from "../components/Layouts/MainLayout";
 import { Product, Products } from "../interfaces/products";
 import { getProducts } from "../utils";
@@ -19,12 +20,11 @@ function HomePage({ products }: Props) {
 		qui lorem cupidatat commodo. Elit sunt amet fugiat veniam
 		occaecat fugiat aliqua."
 		>
-			<input
-				className=""
+			<Input
+				state={searchProduct}
+				handleChange={(e) => setSearchProduct(e.target.value)}
 				type="search"
 				placeholder="Search products"
-				value={searchProduct}
-				onChange={(e) => setSearchProduct(e.target.value)}
 			/>
 
 			<ul>

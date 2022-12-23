@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Header } from "../../components/Header/Header";
+import { Header } from "../../components/Header";
 import { Product } from "../../interfaces/products";
 import { getFilteredProducts, getProduct, getProducts } from "../../utils";
 
