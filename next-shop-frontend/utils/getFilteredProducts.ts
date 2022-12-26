@@ -10,10 +10,6 @@ export async function getFilteredProducts(
 	operator: string,
 	value: string
 ) {
-	// Example: ?filters[category][$eqi]=management
-	// const response = await fetch(
-	// 	`http://127.0.0.1:1337/api/products?filters[${field}][$${operator}]=${value}&populate=*`
-	// );
 	const client = new ApolloClient({
 		uri: "http://127.0.0.1:1337/graphql/",
 		cache: new InMemoryCache(),
