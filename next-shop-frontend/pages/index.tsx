@@ -1,10 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Card } from "../components/Card";
 import { Input } from "../components/Input";
 import { MainLayout } from "../components/Layouts/MainLayout";
-import { Tag } from "../components/Tag";
 import { Product, Products } from "../interfaces/products";
 import { getProducts } from "../utils";
 
@@ -64,7 +62,11 @@ function HomePage({ products }: Props) {
 export async function getStaticProps() {
 	const products = await getProducts();
 
-	return { props: { products: products } };
+	return {
+		props: {
+			products,
+		},
+	};
 }
 
 export default HomePage;
