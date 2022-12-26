@@ -1,8 +1,36 @@
-export async function getProduct(id: number | string) {
-	const response = await fetch(
-		`http://127.0.0.1:1337/api/products/${id}?populate=*`
-	);
-	const product = await response.json();
+import { ApolloClient, InMemoryCache, gql } from "@apollo/client/core";
 
-	return product;
+export async function getProduct(id: number | string) {
+	const client = new ApolloClient({
+		uri: "http://127.0.0.1:1337/graphql/",
+		cache: new InMemoryCache(),
+	});
+
+	const { data } = await client.query({
+		query: gql`
+			query GetProduct {
+				product(id: ${id}) {
+				data {
+					id,
+					attributes {
+						title,
+						description,
+						price,
+						category
+						image {
+							data {
+							attributes {
+								name,
+								url
+							}
+							}
+						}
+					}
+					}
+			  }
+			}
+		`,
+	});
+
+	return data.product;
 }

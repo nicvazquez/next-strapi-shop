@@ -25,8 +25,8 @@ function ProductPage({ product, relatedProducts }: Props) {
 							width={70}
 							height={70}
 						/>
-						<div className="flex flex-col items-start justify-center">
-							<div className="flex items-center gap-2 font-bold mb-1">
+						<div className="ml-4 flex flex-col items-start justify-center">
+							<div className="flex items-center gap-2 font-bold mb-2">
 								<h1 className="text-4xl">{product.attributes.title}</h1>{" "}
 								<div>
 									<span className="text-3xl">${product.attributes.price}</span>{" "}
@@ -121,7 +121,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 	return {
 		props: {
 			product: product.data,
-			relatedProducts: relatedProducts,
+			relatedProducts,
 		},
 		revalidate: 86400,
 	};
